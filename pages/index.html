@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IndieVelo Data</title>
+  <style>
+    /* Apply styles to the displayed data */
+    .data-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>  
+  <script type="module">
+    import { main, subscribe, unsubscribe } from './src/index.js';
+    window.subscribe = subscribe; // Expose the subscribe function to the global scope
+    window.unsubscribe = unsubscribe; // Expose the unsubscribe function to the global scope
+    main();
+</script>  
+</head>
+<body>
+  <h1>IndieVelo Data</h1>
+  <div>
+    <input type="text" id="channelInput" placeholder="Enter channel id">
+    <button id="subscribeButton" onclick="subscribe()">Subscribe</button>
+    <button id="unsubscribeButton" onclick="unsubscribe()">Unsubscribe</button>
+  </div>
+  <div id="data-container">
+    <pre id="json"></pre>
+  </div>
+  <!-- Include the client.js file -->
+
+</body>
+</html>

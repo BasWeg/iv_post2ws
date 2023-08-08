@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IndieVelo Focus Data</title>
+  <style>
+    .container {
+      width: 300px;
+      height: 120px;
+      border-radius: 2px;
+      color: white;
+      background: url(Zeichnung.svg);
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .white-bg {
+      color: black;
+      padding-right: 5px;
+    }
+
+    .team {
+      text-align: right;
+      flex-direction: row-reverse;
+      padding-right: 5px;
+      height: 26px;
+    }
+
+    .position {
+      padding-left: 5px;
+      height: 34px;
+      
+      align-items: center;
+      display: flex;      
+    }
+
+    #Cadence, #Power, #HeartRate, #Speed {
+      font-weight: bold;
+      font-size: large;
+    }
+
+    .data > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  </style>
+  <script type="module">
+    import { main} from './src/focus.js';
+    main();
+</script>     
+</head>
+<body>
+  <div class="container">
+    <div class="row red-bg team">
+      <span id="Team"></span>
+    </div>
+    <div class="row">
+      <span class="position" id="Position"></span>
+      <span class="white-bg" id="Name">Name</span>
+    </div>
+    <div class="row data">
+      <div>
+        <span id="Power">99</span>
+        <span>W</span>
+      </div>
+      <div>
+        <span id="Cadence">99</span>
+        <span>rpm</span>
+      </div>
+      <div>
+        <span id="HeartRate">99</span>
+        <span>bpm</span>
+      </div>
+      <div>
+        <span id="Speed">99.9</span>
+        <span>km/h</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
