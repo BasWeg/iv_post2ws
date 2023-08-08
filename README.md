@@ -23,7 +23,7 @@ clone this repo, or download files. Browse into app directory and call
 within app directory call
 `npm start`
 
-# package / create distributable
+# package / create executable
 ```
 npm install -g pkg
 pkg . --target win-x64
