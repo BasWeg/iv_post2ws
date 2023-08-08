@@ -15,3 +15,16 @@ In this example, you can call
 http://localhost:3000 for ./pages/index.html
 http://localhost:3000/focus.html for ./pages/focus.html
 
+# install 
+clone this repo, or download files. Browse into app directory and call
+`npm install`
+
+# start
+within app directory call
+`npm start`
+
+# package / create distributable
+```
+npm install -g pkg
+pkg . --target win-x64
+```
