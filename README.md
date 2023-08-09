@@ -24,7 +24,13 @@ within app directory call
 `npm start`
 
 # package / create executable
+node <V20:
 ```
 npm install -g pkg
 pkg . --target win-x64
+```
+
+node V20:
+```
+pkg . --target latest-win-x64
 ```
