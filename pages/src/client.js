@@ -58,8 +58,10 @@ const callbacks = new Map(); // Map to store callbacks for each channel
   let isSubscribed = false; // Track the subscription status
 
   subscribe = async function subscribe(channel, callback) {
+    let host = location.host;
+    console.log(host);
     if(!ws){
-      ws = new WebSocket('ws://localhost:3000/websocket');
+      ws = new WebSocket(`ws://${host}/websocket`);
       await waitForOpenConnection(ws);
 
       ws.onmessage = (message) => {
@@ -97,7 +99,7 @@ const callbacks = new Map(); // Map to store callbacks for each channel
 }
 
 
-const waitForOpenConnection = (socket) => {
+export const waitForOpenConnection = (socket) => {
   return new Promise((resolve, reject) => {
       const maxNumberOfAttempts = 10
       const intervalTime = 200 //ms
