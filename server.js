@@ -4,16 +4,17 @@ const WebSocket = require('ws');
 
 const fs = require('fs');
 
+const config = JSON.parse(fs.readFileSync('./config.json')); 
+
 const myserver = express();
-const port = 3000; // You can use any port you prefer
 
 myserver.use(express.json());
 // Serve static files from the 'public' directory
 myserver.use(express.static('pages'));
 
 // Start the HTTP server
-const server = myserver.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+const server = myserver.listen(config.http_port, () => {
+  console.log(`Server listening on port ${config.http_port}`);
 });
 
 const wss = new WebSocket.Server({ server });
