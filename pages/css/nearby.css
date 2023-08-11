@@ -1,0 +1,98 @@
+.rider {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5px;
+
+    background-image: url('../img/chaseYellow.png');  /* Point to the image */
+    background-size: contain;  /* Resize the image to cover the element */
+    background-repeat: no-repeat;  /* Ensure the image doesn't repeat */
+    background-position: top left;  /* Center the image within the element */
+  
+    display: flex;
+    align-items: center;
+     
+    height: 80px;  /* Adjust to the height of your image or desired value */
+    width: 510px; /* or whatever width you desire */
+    
+}
+
+.position {
+    width: 10px; /* or whatever width you feel is enough */
+    font-size: 40px; /* adjust as necessary */
+    font-weight: bold;
+    margin-right: 5px;
+    /*background-color: black;  /* Set background color to black */
+    color: white;  /* Set text color to white */
+    text-align: left;  /* Center the text within the fixed width */
+    padding-left: 30px;  /* Provide some padding for better appearance */
+    padding-top: 10px;
+    font-family: 'Arial', sans-serif;  /* Example font */
+}
+
+.details {
+    flex-grow: 1;
+}
+
+.name {
+    font-family: 'Arial', sans-serif;  /* Example font */
+    color: white;  /* Set text color to white */
+    width: 410px;  /* Set a fixed width, adjust as needed */
+    text-align: left;  /* Center the text within the fixed width */
+    padding-left: 50px;  /* Provide some padding for better appearance */
+    padding-Bottom: 5px;  /* Provide some padding for better appearance */
+    font-size: 25px; /* adjust as necessary */
+    font-weight: bold;
+}
+
+
+.data {
+    font-size: 25px; /* adjust as necessary */
+    display: flex;
+    justify-content: space-between;  /* Distribute items evenly */
+    width: 100%;  /* Take full width of the parent */
+    padding-left: 25px;  /* Provide some padding for better appearance */
+}
+
+
+
+.distance {
+    font-family: 'Arial', sans-serif;  /* Example font */
+    font-size: 25px;  /* Adjust as needed */
+    flex: none;
+    text-align: right;
+    width: 110px;  /* Adjust to a suitable width */
+}
+
+.time-gap {
+    font-family: 'Arial', sans-serif;  /* Example font */
+    font-size: 25px;  /* Adjust as needed */
+    width: 5px; /* or whatever width you feel is enough */
+    font-weight: bold;
+    margin-left: 70px;
+    flex: 1;
+    text-align: left;
+    min-width: 20px;  /* Adjust as necessary */
+}
+
+
+.team {
+    font-family: 'Arial', sans-serif;  /* Example font */
+    font-size: 25px;  /* Adjust as needed */
+    flex: 1;
+    text-align: left;
+    min-width: 90px;  /* Adjust as necessary */
+    margin-left: 30px;
+
+}
+
+.distance .unit {
+    font-size: 20px;  /* Adjust to your preference */
+    vertical-align: center; /* To adjust the vertical positioning if needed */
+    margin-left: 2px; /* Small space between the value and the unit */
+}
+
+.position, .team, .data {
+    flex-shrink: 0;
+    font-weight: bold;
+    vertical-align: center; /* To adjust the vertical positioning if needed */
+}

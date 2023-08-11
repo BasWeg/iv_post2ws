@@ -1,5 +1,5 @@
 import * as client from './client.js';
-
+import * as common from './common.js';
 
 
 let isSubscribed = false; // Track the subscription status
@@ -14,10 +14,9 @@ function updateDataInContainer(indata) {
         isSubscribed = indata.subscribed;
         
       } else {    
-          console.log('Received data from server:', indata);
           // Display the data on the webpage
         let data = indata[0];
-        data.speed = convertToKmPerHour(data.speed);
+        data.speed = common.convertToKmPerHour(data.speed);
         if (data.team == "No Team")
         {
           document.getElementById('Team').innerText = "";
@@ -35,12 +34,6 @@ function updateDataInContainer(indata) {
 }
 }
 
-
-function convertToKmPerHour(speedInMmPerSecond) {
-  const metersPerSecond = speedInMmPerSecond / 1000; // Convert mm/s to m/s
-  const kmPerHour = metersPerSecond * 3.6; // Convert m/s to km/h
-  return Math.round(kmPerHour * 10) / 10; // Round to 1 decimal place
-}
 
 export async function main() {
   client.subscribe("focus", updateDataInContainer);
