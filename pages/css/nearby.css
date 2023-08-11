@@ -82,7 +82,7 @@
     text-align: left;
     min-width: 90px;  /* Adjust as necessary */
     margin-left: 30px;
-
+    white-space: nowrap;
 }
 
 .distance .unit {
