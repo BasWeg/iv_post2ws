@@ -4,6 +4,7 @@ It receives (indievelo) http post data in json format and forwards these to subs
 
 
 To receive and forward post messages the configured broadcasting urls needs to be like http://localhost:3000/post?channel=focus
+(you can use localhost or 127.0.0.1 if the app runs at the same pc as indievelo. If the app runs at a different PC, you need to insert this ip instead of localhost. In addition it is necessary to change the firewall settings to allow tcp for the configured port (e.g. 3000))
 
 ![indievelo](https://github.com/BasWeg/iv_post2ws/assets/56368122/143d4105-b198-40d3-83c9-66d58d387eae)
 
