@@ -40,9 +40,14 @@ within app directory call
 `npm start`
 
 # package / create executable
-node <V20:
+## Install package manager
 ```
 npm install -g pkg
+```
+
+## create executable
+node <V20:
+```
 pkg . --target win-x64
 ```
 
