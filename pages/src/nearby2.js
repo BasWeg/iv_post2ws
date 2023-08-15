@@ -74,7 +74,7 @@ const id = urlSearchParams.get('id'); // Extract id from URL query
 const channel = urlSearchParams.get('channel'); // Extract id from URL query   
 
 const defaultsettings = {
-    outerColor: "#f2ca29",
+    outerColor: "#ff0000",
     innerColor: "#333331",
     outerTextColor: "#000000",
     innerTextColor: "#FFFFFF",
