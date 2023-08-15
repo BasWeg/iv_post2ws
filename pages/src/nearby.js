@@ -15,6 +15,9 @@ function updateDataInContainer(dataArray) {
       const formattedTimeGap = common.convertTimeGapToMinSec(data.timeGap);
 
       racer.innerHTML = `
+        <svg viewBox="0 0 363.20001 54.720001" id="nearbysvg">
+            <use xlink:href="#nearbyframe"></use>
+        </svg>
           <div class="position">${data.position}</div>
           <div class="details">
               <div class="name">${data.name}</div>
@@ -52,7 +55,90 @@ function getUniqueTeamEntries(dataArray) {
   return uniqueEntries;
 }
 
+// Add a right-click context menu for settings
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    const contextMenu = document.querySelector('#settings-menu');
+    if (contextMenu.style.display === 'block') {
+        contextMenu.style.display = 'none';
+    } else {
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = `0px`;
+    contextMenu.style.top = `0px`;
+    }
+});
+
+const pageName = common.getPageNameFromPath(); // Get page name without .html
+const urlSearchParams = new URLSearchParams(window.location.search);
+const id = urlSearchParams.get('id'); // Extract id from URL query   
+const channel = urlSearchParams.get('channel'); // Extract id from URL query   
+
+const defaultsettings = {
+    outerColor: "#ff0000",
+    innerColor: "#333331",
+    outerTextColor: "#000000",
+    innerTextColor: "#FFFFFF",
+    backgroundColor: "#FFFFFF"
+};
+
+
+
+function loadSettings() {
+    const settings = common.loadSettings(pageName, id) || defaultsettings;
+    
+    document.documentElement.style.setProperty('--outer-color', settings.outerColor);
+    document.querySelector('#coloris-outer').value = settings.outerColor;
+    document.querySelector('#coloris-outer-field').style = "color: " + settings.outerColor;
+
+    document.documentElement.style.setProperty('--inner-color', settings.innerColor);
+    document.querySelector('#coloris-inner').value = settings.innerColor;
+    document.querySelector('#coloris-inner-field').style = "color: " + settings.innerColor;
+
+    document.documentElement.style.setProperty('--outer-text-color', settings.outerTextColor);
+    document.querySelector('#coloris-outer-text').value = settings.outerTextColor;
+    document.querySelector('#coloris-outer-text-field').style = "color: " + settings.outerTextColor;
+
+    document.documentElement.style.setProperty('--inner-text-color', settings.innerTextColor);
+    document.querySelector('#coloris-inner-text').value = settings.innerTextColor;
+    document.querySelector('#coloris-inner-text-field').style = "color: " + settings.innerTextColor;
+
+    document.documentElement.style.setProperty('--background-color', settings.backgroundColor);
+    document.querySelector('#coloris-background').value = settings.backgroundColor;
+    document.querySelector('#coloris-background-field').style = "color: " + settings.backgroundColor;
+   
+}
+
+function saveSettings() {
+    const outerColor = document.querySelector('#coloris-outer').value;
+    const innerColor = document.querySelector('#coloris-inner').value;
+    const outerTextColor = document.querySelector('#coloris-outer-text').value;
+    const innerTextColor = document.querySelector('#coloris-inner-text').value;    
+    const backgroundColor = document.querySelector('#coloris-background').value;
+    const settings = {
+        outerColor: outerColor,
+        innerColor: innerColor,
+        outerTextColor: outerTextColor,
+        innerTextColor: innerTextColor,
+        backgroundColor: backgroundColor        
+    }
+    common.saveSettings(pageName, id, settings);
+ 
+    loadSettings(); // Apply the new settings
+}
+
+// Load saved settings when the page loads
+window.addEventListener('load', () => {
+
+    loadSettings();
+    document.querySelector('#coloris-background').addEventListener('input', saveSettings);
+    document.querySelector('#coloris-outer').addEventListener('input', saveSettings);
+    document.querySelector('#coloris-inner').addEventListener('input', saveSettings);
+    document.querySelector('#coloris-inner-text').addEventListener('input', saveSettings);   
+    document.querySelector('#coloris-outer-text').addEventListener('input', saveSettings); 
+});
+
+
 
 export async function main() {
-    client.subscribe("nearby", updateDataInContainer);
+    client.subscribe((channel ? channel : 'nearby'), updateDataInContainer);
 }

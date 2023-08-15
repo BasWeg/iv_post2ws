@@ -1,9 +1,27 @@
+:root {
+    --outer-color: #ff0000;
+    --inner-color: #333331;
+    --outer-text-color: #000000;
+    --inner-text-color: #FFFFFF;    
+    --background-color: #FFFFFF;  
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+#settings-menu {
+    background: grey;
+    padding: 10px;
+    position: absolute;
+    z-index: 100;
+}
+
 .rider {
     margin: 0;
     padding: 0;
     padding-bottom: 5px;
 
-    background-image: url('../img/nearby.svg');  /* Point to the image */
     background-size: contain;  /* Resize the image to cover the element */
     background-repeat: no-repeat;  /* Ensure the image doesn't repeat */
     background-position: top left;  /* Center the image within the element */
@@ -17,28 +35,31 @@
 }
 
 .position {
-    width: 10px; /* or whatever width you feel is enough */
+    width: 60px;
     font-size: 40px; /* adjust as necessary */
     font-weight: bold;
     margin-right: 5px;
     /*background-color: black;  /* Set background color to black */
-    color: white;  /* Set text color to white */
-    text-align: left;  /* Center the text within the fixed width */
-    padding-left: 30px;  /* Provide some padding for better appearance */
+    color: var(--inner-text-color);;  /* Set text color to white */
+    text-align: center;  /* Center the text within the fixed width */
+    padding-left: 10px;  /* Provide some padding for better appearance */
     padding-top: 10px;
     font-family: 'Arial', sans-serif;  /* Example font */
+    z-index:10;
 }
 
 .details {
     flex-grow: 1;
+    z-index:10;
+    color: var(--outer-text-color);
 }
 
 .name {
     font-family: 'Arial', sans-serif;  /* Example font */
-    color: white;  /* Set text color to white */
+    color: var(--inner-text-color);;  /* Set text color to white */
     width: 410px;  /* Set a fixed width, adjust as needed */
     text-align: left;  /* Center the text within the fixed width */
-    padding-left: 50px;  /* Provide some padding for better appearance */
+    padding-left: 30px;  /* Provide some padding for better appearance */
     padding-Bottom: 5px;  /* Provide some padding for better appearance */
     font-size: 25px; /* adjust as necessary */
     font-weight: bold;
@@ -50,7 +71,6 @@
     display: flex;
     justify-content: space-between;  /* Distribute items evenly */
     width: 100%;  /* Take full width of the parent */
-    padding-left: 25px;  /* Provide some padding for better appearance */
 }
 
 
@@ -68,9 +88,9 @@
     font-size: 25px;  /* Adjust as needed */
     width: 5px; /* or whatever width you feel is enough */
     font-weight: bold;
-    margin-left: 70px;
+    padding-right: 30px;
     flex: 1;
-    text-align: left;
+    text-align: right;
     min-width: 20px;  /* Adjust as necessary */
 }
 
@@ -96,3 +116,20 @@
     font-weight: bold;
     vertical-align: center; /* To adjust the vertical positioning if needed */
 }
+
+svg#nearbysvg {
+    height: inherit;
+    width: inherit;
+    position: fixed;
+    padding: inherit;
+
+}
+
+.nearby-outer {
+    fill: var(--outer-color) !important;
+}
+
+.nearby-inner {
+    fill: var(--inner-color) !important;
+}
+
