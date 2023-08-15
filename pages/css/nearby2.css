@@ -41,8 +41,8 @@ body {
     margin-right: 5px;
     /*background-color: black;  /* Set background color to black */
     color: var(--inner-text-color);;  /* Set text color to white */
-    text-align: right;  /* Center the text within the fixed width */
-    padding-left: 5px;  /* Provide some padding for better appearance */
+    text-align: center;  /* Center the text within the fixed width */
+    padding-left: 10px;  /* Provide some padding for better appearance */
     padding-top: 10px;
     font-family: 'Arial', sans-serif;  /* Example font */
     z-index:10;
