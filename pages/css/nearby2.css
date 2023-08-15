@@ -125,11 +125,11 @@ svg#nearbysvg {
 
 }
 
-path#outer {
+.nearby-outer {
     fill: var(--outer-color) !important;
 }
 
-path#inner {
+.nearby-inner {
     fill: var(--inner-color) !important;
 }
 
