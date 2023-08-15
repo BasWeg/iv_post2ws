@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IndieVelo Nearby Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ... styles remain unchanged ... -->
+    <script type="module">
+        import { main } from './src/nearby2.js';
+        main();
+    </script> 
+    <link rel="stylesheet" type="text/css" href="./css/nearby2.css">
+    <link rel="stylesheet" type="text/css" href="./deps/coloris/coloris.min.css">
+</head>
+<body>
+    <div class="riders-container">
+    <!-- Individual rider entries will be appended here -->
+</div>
+<svg
+   version="1.1"
+   id="nearbysvg"
+   width="363.20001"
+   height="54.720001"
+   style="display: none;"
+   viewBox="0 0 363.20001 54.720001"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <g
+   inkscape:groupmode="layer"
+   inkscape:label="Image"
+   id="nearbyframe"
+   transform="translate(-0.10243769,-0.02128016)">   
+    <g
+
+       transform="translate(0.09544781,-0.0243849)">
+      <path
+         style="fill:#f2ca29"
+         d="M 4.679925,54.250506 C 2.3181958,53.407491 0.02399746,50.432955 0.00702784,48.191875 -0.01019644,45.917164 5.8393801,7.1266176 6.387492,5.8808305 7.242083,3.9384567 9.0953951,2.0578318 11.148626,1.0495303 12.96,0.16 12.96,0.16 184.48001,0.06736915 c 94.336,-0.05094697 172.11221,-0.0090921 172.83601,0.09301092 2.60866,0.36798656 5.2748,2.93266463 5.76498,5.54558653 0.37125,1.9789274 -5.50233,41.4590324 -6.46649,43.4654084 -0.92783,1.930782 -2.81161,3.741203 -4.89533,4.704681 -1.89267,0.875142 -344.6006156,1.244918 -347.039255,0.37445 z"
+         id="outer" />
+      <path
+         style="fill:#333331"
+         d="M 9.829601,47.650697 C 7.2160649,47.035281 4.8019636,44.932992 4.797855,43.268866 4.7966751,42.79099 5.5318025,37.072001 6.4314714,30.560001 8.9438319,12.374987 7.3826566,13.44 31.527224,13.44 c 24.397198,0 23.018591,-1.148743 20.471217,17.057923 -2.140733,15.300309 -2.251529,15.536741 -7.99844,17.068128 -1.873948,0.499353 -32.09134,0.574207 -34.1704,0.08465 z M 60.163289,30.93904 C 55.887232,29.577303 55.195036,26.897015 56.633498,17.271154 57.900632,8.7917813 59.034953,6.6068355 63.131598,4.7544179 65.489706,3.6881306 352.56545,3.5334889 354.56001,4.5974315 c 3.98984,2.1282637 4.40355,3.9491356 3.03491,13.3575695 -1.31395,9.032477 -2.9151,11.7239 -7.77817,13.074596 -1.73176,0.480988 -288.139902,0.391445 -289.653461,-0.09056 z"
+         id="inner" />
+    </g>
+</g>
+</svg>
+    <!-- Right-click context menu for settings -->
+    <div id="settings-menu" class="context-menu" style="display: none;">
+     
+        <div class="rider">
+            <svg viewBox="0 0 363.20001 54.720001" id="nearbysvg">
+                <use xlink:href="#nearbyframe"></use>
+            </svg>
+              <div class="position">77</div>
+              <div class="details">
+                  <div class="name">Max Mustermann</div>
+                  <div class="data">
+                  <span class="distance">23.7<span class="unit">km</span></span>
+                  <span class="team">DreamTeam</span>
+                  <span class="time-gap">02:17</span>
+              </div>
+              </div>
+        </div>
+        <div class="menu-item">
+            <div class="clr-field" id="coloris-background-field">
+                <button type="button" aria-labelledby="clr-open-label"></button>
+                <input type="text" id="coloris-background" class="coloris">
+            </div>               
+            <label>Background Color</label>
+        </div>        
+        <div class="menu-item">
+            <div class="clr-field" id="coloris-inner-field">
+                <button type="button" aria-labelledby="clr-open-label"></button>
+                <input type="text" id="coloris-inner" class="coloris">
+            </div>               
+            <label>Position and Name Frame Color</label>
+        </div>
+        <div class="menu-item">
+            <div class="clr-field" id="coloris-inner-text-field">
+                <button type="button" aria-labelledby="clr-open-label"></button>
+                <input type="text" id="coloris-inner-text" class="coloris">
+            </div>            
+            <label>Position and Name Color</label>
+        </div>            
+        <div class="menu-item">
+            <div class="clr-field" id="coloris-outer-field">
+                <button type="button" aria-labelledby="clr-open-label"></button>
+                <input type="text" id="coloris-outer" class="coloris">
+            </div>
+            <label>Details Frame Color</label>
+        </div>        
+        <div class="menu-item">
+            <div class="clr-field" id="coloris-outer-text-field">
+            <button type="button" aria-labelledby="clr-open-label"></button>
+            <input type="text" id="coloris-outer-text" class="coloris"></div>
+            <label>Details Text Color</label>
+        </div>
+    </div>
+    <script src="./deps/coloris/coloris.min.js"></script>
+    <script>
+          Coloris({
+      el: '.coloris',
+      swatches: [
+        '#264653',
+        '#2a9d8f',
+        '#e9c46a',
+        '#f4a261',
+        '#e76f51',
+        '#d62828',
+        '#023e8a',
+        '#0077b6',
+        '#0096c7',
+        '#00b4d8',
+        '#48cae4'
+      ]
+    });
+    </script>
+</body>
+</html>

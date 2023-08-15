@@ -23,3 +23,25 @@ export function convertToKilometers(distanceInMeters) {
   return (distanceInMeters / 1000).toFixed(1);
 }
 
+export function getPageNameFromPath() {
+  const path = window.location.pathname;
+  const lastIndex = path.lastIndexOf('/');
+  const pageNameWithExtension = path.substring(lastIndex + 1);
+  const pageName = pageNameWithExtension.replace('.html', ''); // Remove .html
+  return pageName;
+}
+
+export function loadSettings(pageName, id) {
+  const storageKey = `${pageName}_${id ? id : 'default'}`;
+  const storedSettings = localStorage.getItem(storageKey);
+  let settings = null;
+  if (storedSettings) {
+      settings = JSON.parse(storedSettings);
+  }
+  return settings;
+}
+
+export  function saveSettings(pageName, id, settings) {
+  const storageKey = `${pageName}_${id ? id : 'default'}`;
+  localStorage.setItem(storageKey, JSON.stringify(settings));
+}
