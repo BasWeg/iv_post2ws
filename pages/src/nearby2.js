@@ -71,6 +71,7 @@ document.addEventListener('contextmenu', (e) => {
 const pageName = common.getPageNameFromPath(); // Get page name without .html
 const urlSearchParams = new URLSearchParams(window.location.search);
 const id = urlSearchParams.get('id'); // Extract id from URL query   
+const channel = urlSearchParams.get('channel'); // Extract id from URL query   
 
 const defaultsettings = {
     outerColor: "#f2ca29",
@@ -144,5 +145,5 @@ window.addEventListener('load', () => {
 
 
 export async function main() {
-    client.subscribe("nearby", updateDataInContainer);
+    client.subscribe((channel ? channel : 'nearby'), updateDataInContainer);
 }
