@@ -81,5 +81,8 @@ wss.on('connection', (ws) => {
 
   ws.on('close', () => {
     console.log('A client disconnected');
+    for (const channel in channels) {
+      if (channels[channel].has(ws)) channels[channel].delete(ws);
+    }
   });
 });
