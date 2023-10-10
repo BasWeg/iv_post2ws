@@ -13,7 +13,24 @@ To receive and forward post messages the configured broadcasting urls needs to b
 ## iv_post2ws post to websocket routing:
 The data is forwarded to websocket clients which subscribed for the corresponding channel.
 
-![iv_post2ws drawio](https://github.com/BasWeg/iv_post2ws/assets/56368122/94803fd3-f6db-4b9e-a1ef-15dab47f87ce)
+```mermaid 
+sequenceDiagram 
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=focus
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=nearby
+client a ->>iv_post2ws: websocket subscribe channel focus
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=focus
+iv_post2ws ->> client a: forward focus data to websocket client a
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=nearby
+client b ->>iv_post2ws: websocket subscribe channel nearby
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=focus
+iv_post2ws ->> client a: forward focus data to websocket client a
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=nearby
+iv_post2ws ->> client b: forward nearby data to websocket client b
+client a ->>iv_post2ws: websocket close
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=focus
+indieVelo->>iv_post2ws: http://<ip>:3000/post?channel=nearby
+iv_post2ws ->> client b: forward nearby data to websocket client b
+```
 
 
 Please have a look to ./pages/src/index.js or ./pages/src/focus.js how the subscription is handled.
